@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const inter_display = Inter({
   subsets: ["latin"],
+  weight: ["600"],
+  variable: "--display-family",
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const inter_body = Inter({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--body-family",
+});
+
+const fira_code = Fira_Code({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-mono",
 });
 
 const siteUrl =
@@ -20,9 +28,9 @@ const siteUrl =
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "http://localhost:3000";
 
-const title = "Dev Starter by Zippystarter";
+const title = "Leonardo Castro | Portfólio";
 const description =
-  "Dev Starter is an open source, one page developer portfolio template.";
+  "Portfólio de Desenvolvedor Full Stack. Confira meus projetos, habilidades e experiências.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -43,10 +51,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth shadcn">
-      <body
-        className={`font-body antialiased ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
-      >
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${inter_display.variable} ${inter_body.variable} ${fira_code.variable} scroll-smooth shadcn`}
+    >
+      <body className="font-body antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

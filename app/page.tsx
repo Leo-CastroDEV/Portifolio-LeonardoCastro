@@ -8,8 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Github,
   Linkedin,
@@ -24,123 +22,121 @@ import {
 import { Container } from "@/components/zippystarter/container";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { socialLinks } from "@/lib/social-links";
 import { ProjectImage } from "@/components/project-image";
+import { ContactForm } from "@/components/contact-form";
+import { SiteHeader } from "@/components/site-header";
 
 export default function Home() {
   const projects = [
     {
-      title: "Nebula Dashboard",
+      title: "FocoAI — Organizador de Tarefas",
       description:
-        "Real-time analytics platform for distributed systems. Built with React, WebSocket, and Go.",
-      tags: ["React", "Go", "WebSocket", "D3.js"],
-      image: "/project-placeholder-1.jpg",
-      link: "#",
-      repo: "#",
+        "Plataforma de gerenciamento de tarefas desenvolvida para organizar atividades, prazos e prioridades de forma simples e eficiente, integrada a uma API para gerenciamento dos dados.",
+      tags: ["React", "JavaScript", "Node.js", "Express", "MySQL", "API REST"],
+      images: [
+        "/teladelogin.jpg",
+        "/teladecadastro.jpg",
+        "/telainicial.jpg",
+      ],
+      link: "https://focoai.onrender.com/",
+      repo: "https://github.com/Leo-CastroDEV/OrganizadorDeTarefasAPI",
     },
     {
-      title: "Void Chain",
+      title: "AlfaTech | Landing Page de Hospedagem",
       description:
-        "Decentralized identity verification protocol. Smart contracts written in Solidity.",
-      tags: ["Solidity", "Ethereum", "Web3.js", "Node.js"],
-      image: "/project-placeholder-2.jpg",
-      link: "#",
-      repo: "#",
+        "Landing page moderna e responsiva para uma empresa de hospedagem de sites, desenvolvida com foco em apresentação de serviços, planos de hospedagem e experiência do usuário.",
+      tags: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+      image: "/AlfaTechLandingPage.jpg",
+      link: "https://pagina-provedor-de-hospedagem.vercel.app/",
+      repo: "https://github.com/Leo-CastroDEV/Pagina-Provedor-de-hospedagem",
     },
     {
-      title: "Cyber Construct",
+      title: "Calculadora Científica",
       description:
-        "3D architectural visualization tool running in the browser using WebGL.",
-      tags: ["Three.js", "WebGL", "Vue", "Python"],
-      image: "/project-placeholder-3.jpg",
-      link: "#",
-      repo: "#",
+        "Aplicação web de calculadora científica desenvolvida para realizar operações matemáticas básicas e avançadas, com uma interface moderna, responsiva e intuitiva.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      image: "/calculadora.jpg",
+      link: "https://leo-castrodev.github.io/TechCalc-/",
+      repo: "https://github.com/Leo-CastroDEV/TechCalc-",
     },
   ];
 
   const skills = [
     {
-      category: "Frontend",
-      items: ["React", "TypeScript", "Tailwind CSS", "Three.js", "Next.js"],
-    },
-    {
-      category: "Backend",
-      items: ["Node.js", "Go", "PostgreSQL", "Redis", "Docker"],
-    },
-    {
-      category: "Tools",
-      items: ["Git", "Linux", "AWS", "Kubernetes", "Figma"],
-    },
+  category: "Frontend",
+
+  items: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Tailwind CSS", "Next.js"],
+
+},
+
+{
+
+  category: "Backend",
+
+  items: ["Node.js", "Express", "REST APIs", "MySQL", "MongoDB"],
+
+},
+
+{
+
+  category: "Ferramentas",
+
+  items: ["Git", "GitHub", "Postman", "Vercel", "PostgreSQL"],
+
+},
   ];
 
   const blogPosts = [
     {
-      title: "Optimizing React Render Cycles in High-Frequency Data Apps",
-      date: "Oct 12, 2024",
-      readTime: "5 min read",
-      excerpt:
-        "Deep dive into memoization strategies and custom hooks for handling 100+ updates per second.",
-    },
-    {
-      title: "The State of WebAssembly in 2024",
-      date: "Sep 28, 2024",
-      readTime: "8 min read",
-      excerpt:
-        "Is WASM ready to replace JavaScript for heavy compute tasks? A performance benchmark.",
-    },
-    {
-      title: "Building a Custom Kubernetes Operator with Go",
-      date: "Aug 15, 2024",
-      readTime: "12 min read",
-      excerpt:
-        "Automating stateful application management using the Operator pattern.",
-    },
+  title: "Desenvolvimento Web Moderno: Do Frontend ao Backend",
+
+  date: "12 de Ago, 2026",
+
+  readTime: "5 min de leitura",
+
+  excerpt:
+    "Uma visão prática sobre como integrar interfaces modernas, APIs e bancos de dados para criar aplicações web completas e funcionais.",
+
+},
+
+{
+
+  title: "Integrando Inteligência Artificial em Aplicações Web",
+
+  date: "19 de Ago, 2026",
+
+  readTime: "7 min de leitura",
+
+  excerpt:
+    "Como utilizar APIs de Inteligência Artificial para transformar aplicações web em soluções mais inteligentes, interativas e automatizadas.",
+
+},
+
+{
+
+  title: "Construindo uma API REST com Node.js e Express",
+
+  date: "26 de Ago, 2026",
+
+  readTime: "8 min de leitura",
+
+  excerpt:
+    "Um guia prático sobre criação de APIs REST, organização de rotas, integração com banco de dados e boas práticas no desenvolvimento backend.",
+
+},
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
-      {/* Navigation / Header */}
-      <Container
-        component="header"
-        wrapperClassName="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border"
-        className="mx-auto max-w-7xl flex items-center justify-between h-16 uppercase"
-      >
-        <div className="text-xl font-bold font-mono tracking-tighter">
-          Marcus<span className="text-primary">_</span>Chen
-        </div>
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-muted-foreground ">
-          <Link
-            href="#projects"
-            className="hover:text-primary transition-colors"
-          >
-            Projects
-          </Link>
-          <Link href="#skills" className="hover:text-primary transition-colors">
-            Skills
-          </Link>
-          <Link href="#blog" className="hover:text-primary transition-colors">
-            Logs
-          </Link>
-          <Link
-            href="#contact"
-            className="hover:text-primary transition-colors"
-          >
-            Contact
-          </Link>
-        </nav>
-        <Button
-          variant="outline"
-          className="font-mono text-xs border-primary/50 hover:bg-primary/10 hover:text-primary hover:border-primary"
-        >
-          resume_v4.pdf
-        </Button>
-      </Container>
+      <SiteHeader />
 
-      {/* Hero Section */}
+      {/* Seção de introdução */}
       <Container
-        wrapperClassName="relative min-h-screen flex items-center pt-16 overflow-hidden"
+        wrapperClassName="relative flex min-h-screen items-center overflow-hidden pt-32 sm:pt-24 lg:pt-20"
         className="mx-auto max-w-7xl flex-1"
       >
-        {/* Background Image with Overlay */}
+        {/* Imagem de fundo com sobreposição */}
         <div className="absolute inset-0 z-0">
           <div className="relative w-[100vw] h-[100vh] bg-background overflow-hidden">
             <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-[url('/hero-bg.jpg')] before:absolute before:inset-0 before:bg-primary before:mix-blend-color-dodge dark:before:mix-blend-color" />
@@ -148,16 +144,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
         </div>
 
-        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 grid items-center gap-10 md:grid-cols-2 md:gap-12">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-mono">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              SYSTEM ONLINE // AVAILABLE FOR HIRE
+              SISTEMA ONLINE • DISPONÍVEL PARA PROJETOS
             </div>
-            <h1 className="text-6xl md:text-8xl font-display tracking-tighter leading-[0.9]">
+            <h1 className="text-5xl font-display leading-[0.9] tracking-tighter sm:text-6xl md:text-8xl">
               FULL
               <br />
               STACK
@@ -167,38 +163,43 @@ export default function Home() {
               </span>
             </h1>
             <p className="md:text-xl text-muted-foreground max-w-md leading-relaxed">
-              Architecting digital voids and crafting high-performance web
-              experiences. Specialized in scalable distributed systems and
-              interactive 3D interfaces.
+              Transformando ideias em soluções digitais e criando experiências
+              web modernas, funcionais e intuitivas. Apaixonado por tecnologia,
+              desenvolvimento e inovação, com foco em construir projetos que
+              unem criatividade, desempenho e propósito.
             </p>
-            <div className="flex gap-4 pt-4 items-center">
+            <div className="flex flex-wrap items-center gap-3 pt-4 sm:gap-4">
               <Link
                 href="#projects"
                 className={cn("uppercase", buttonVariants({ size: "lg" }))}
               >
-                View projects <ArrowRight className="size-4" />
+                Ver Projetos <ArrowRight className="size-4" />
               </Link>
               <div className="flex gap-2">
                 <Link
-                  href="#"
+                  href={socialLinks.github}
+                  target="_blank"
+                  rel="noreferrer"
                   className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" })
+                    buttonVariants({ variant: "ghost", size: "icon" }),
                   )}
                 >
                   <Github className="h-5 w-5" />
                 </Link>
                 <Link
-                  href="#"
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
                   className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" })
+                    buttonVariants({ variant: "ghost", size: "icon" }),
                   )}
                 >
                   <Linkedin className="h-5 w-5" />
                 </Link>
                 <Link
-                  href="#"
+                  href={socialLinks.email}
                   className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" })
+                    buttonVariants({ variant: "ghost", size: "icon" }),
                   )}
                 >
                   <Mail className="h-5 w-5" />
@@ -207,7 +208,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Decorative Abstract Element */}
+          {/* Elemento decorativo abstrato */}
           <div className="hidden md:block relative h-[500px] w-full border border-border/30 bg-card/10 backdrop-blur-sm p-8">
             <div className="absolute top-0 left-0 size-4 border-t-2 border-l-2 border-primary"></div>
             <div className="absolute top-0 right-0 size-4 border-t-2 border-r-2 border-primary"></div>
@@ -216,22 +217,22 @@ export default function Home() {
 
             <div className="h-full w-full flex flex-col justify-between font-mono text-xs text-muted-foreground">
               <div className="flex justify-between">
-                <span>SYS.STATUS: NORMAL</span>
-                <span>UPTIME: 99.9%</span>
+                <span>STATUS_SIS: NORMAL</span>
+                <span>TEMPO_ATIVO: 99.9%</span>
               </div>
               <div className="space-y-2">
                 <div className="h-1 w-full bg-secondary overflow-hidden">
                   <div className="h-full bg-primary w-[75%]"></div>
                 </div>
                 <div className="flex justify-between">
-                  <span>CPU_LOAD</span>
+                  <span>USO_CPU</span>
                   <span>75%</span>
                 </div>
                 <div className="h-1 w-full bg-secondary overflow-hidden">
                   <div className="h-full bg-primary w-[42%]"></div>
                 </div>
                 <div className="flex justify-between">
-                  <span>MEM_USAGE</span>
+                  <span>USO_MEM</span>
                   <span>42%</span>
                 </div>
               </div>
@@ -239,41 +240,76 @@ export default function Home() {
                 <span className="block text-4xl font-bold text-foreground">
                   03
                 </span>
-                <span>ACTIVE_PROJECTS</span>
+                <span>PROJETOS_ATIVOS</span>
               </div>
             </div>
           </div>
         </div>
       </Container>
-      {/* Projects Section */}
+      {/* Seção sobre */}
+      <Container
+        component="section"
+        wrapperClassName="border-t border-border pt-16 md:pt-24"
+        className="mx-auto max-w-7xl flex-1"
+      >
+        <div className="mb-16 space-y-8">
+          <div>
+            <h2 className="mb-4 text-3xl font-display tracking-tighter sm:text-4xl md:text-6xl">
+              SOBRE
+              <br />
+              MIM
+            </h2>
+            <div className="h-1 w-24 bg-primary"></div>
+          </div>
+          <div className="max-w-4xl space-y-4 text-left leading-relaxed text-muted-foreground">
+            <p>
+              Sou estudante de Análise e Desenvolvimento de Sistemas, em constante evolução na área de tecnologia e desenvolvimento de software. Tenho construído minha trajetória por meio de projetos práticos, estudos acadêmicos e desenvolvimento de soluções que transformam conhecimento em aplicações reais.
+            </p>
+            <p>
+              Meu foco profissional está no desenvolvimento Full Stack, buscando aprimorar continuamente minhas habilidades em programação, desenvolvimento web, APIs, bancos de dados e integração de soluções com Inteligência Artificial.
+            </p>
+            <p>
+              Tenho um perfil curioso, autodidata, comprometido e orientado à resolução de problemas. Gosto de entender como as tecnologias funcionam, experimentar novas soluções e transformar ideias em projetos funcionais.
+            </p>
+            <p>
+              Atualmente, meu principal objetivo é ingressar no mercado de tecnologia, conquistar experiência profissional e continuar evoluindo como desenvolvedor. Busco oportunidades que me permitam aprender com profissionais experientes, contribuir com projetos reais e construir uma carreira sólida em desenvolvimento de software.
+            </p>
+          </div>
+        </div>
+      </Container>
+
+      {/* Seção de projetos */}
       <Container
         id="projects"
         component="section"
-        wrapperClassName="py-24 border-t border-border"
+        wrapperClassName="border-t border-border py-16 md:py-24"
         className="mx-auto max-w-7xl flex-1"
       >
         <div className="grid justify-between items-end mb-16 gap-4">
           <div>
-            <h2 className="text-4xl md:text-6xl font-display tracking-tighter mb-4">
-              SELECTED
+            <h2 className="mb-4 text-3xl font-display tracking-tighter sm:text-4xl md:text-6xl">
+              PROJETOS
               <br />
-              WORKS
+              DESENVOLVIDOS
             </h2>
             <div className="h-1 w-24 bg-primary"></div>
           </div>
-          <p className="text-muted-foreground max-w-sm text-left">
-            A collection of experiments, production apps, and open source
-            contributions.
+          <p className="max-w-2xl text-left text-muted-foreground">
+            Uma coleção de experimentos, aplicativos em produção e contribuições de código aberto.
           </p>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,250px),1fr))] grid-rows-[repeat(3,auto)] gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="pt-0 group bg-card border-border hover:border-primary/50 transition-all duration-300 rounded-none overflow-hidden grid grid-rows-subgrid row-span-3 content-start items-start"
+              className="group grid content-start items-start overflow-hidden rounded-none border-border bg-card pt-0 transition-all duration-300 hover:border-primary/50"
             >
-              <ProjectImage src={project.image} alt={project.title} />
+              <ProjectImage
+                src={project.image ?? project.images?.[0] ?? "/project-placeholder-1.jpg"}
+                alt={project.title}
+                images={project.images ?? (project.image ? [project.image] : [])}
+              />
               <div className="grid gap-4">
                 <CardHeader className="grid gap-4">
                   <CardTitle className="text-2xl font-display group-hover:text-primary transition-colors">
@@ -302,43 +338,43 @@ export default function Home() {
                   href={project.link}
                   className="text-sm font-display flex items-center hover:text-primary transition-colors gap-2"
                 >
-                  LIVE DEMO <ExternalLink className="size-3" />
+                  DEMO AO VIVO <ExternalLink className="size-3" />
                 </Link>
                 <Link
                   href={project.repo}
                   className="text-sm font-display flex items-center hover:text-primary transition-colors gap-2"
                 >
-                  CODE <Github className="size-3" />
+                  CÓDIGO <Github className="size-3" />
                 </Link>
               </CardFooter>
             </Card>
           ))}
         </div>
       </Container>
-      {/* Skills Matrix */}
+      {/* Matriz de habilidades */}
       <Container
         id="skills"
         component="section"
-        wrapperClassName="py-24 bg-secondary/20 border-t border-border"
+        wrapperClassName="border-t border-border bg-secondary/20 py-16 md:py-24"
         className="mx-auto max-w-7xl flex-1"
       >
         <div className="grid md:grid-cols-12 gap-12">
           <div className="md:col-span-4">
-            <h2 className="text-4xl font-display tracking-tighter mb-6">
-              TECH_STACK
+            <h2 className="mb-6 text-3xl font-display tracking-tighter sm:text-4xl">
+              HABILIDADES
             </h2>
             <p className="text-muted-foreground mb-8">
-              My preferred weapons of choice for building digital products.
-              Always learning, always evolving.
+              As tecnologias e ferramentas que utilizo para construir produtos
+              digitais de alta performance e escalabilidade.
             </p>
             <div className="grid grid-cols-2 gap-4">
               <div className="p-4 border border-border bg-background flex flex-col items-center justify-center aspect-square hover:border-primary transition-colors">
                 <Code2 className="h-8 w-8 mb-2 text-primary" />
-                <span className="font-mono text-xs">CLEAN_CODE</span>
+                <span className="font-mono text-xs">CÓDIGO_LIMPO</span>
               </div>
               <div className="p-4 border border-border bg-background flex flex-col items-center justify-center aspect-square hover:border-primary transition-colors">
                 <Database className="h-8 w-8 mb-2 text-primary" />
-                <span className="font-mono text-xs">SCALABLE_DB</span>
+                <span className="font-mono text-xs">BANCO_DE_DADOS</span>
               </div>
               <div className="p-4 border border-border bg-background flex flex-col items-center justify-center aspect-square hover:border-primary transition-colors">
                 <Cpu className="h-8 w-8 mb-2 text-primary" />
@@ -375,22 +411,22 @@ export default function Home() {
           </div>
         </div>
       </Container>
-      {/* Blog Section */}
+      {/* Seção de blog */}
       <Container
         id="blog"
-        className="py-24 border-t border-border max-w-7xl mx-auto"
+        className="mx-auto max-w-7xl border-t border-border py-16 md:py-24"
       >
-        <h2 className="text-4xl font-display mb-12 uppercase">Transmissions</h2>
+        <h2 className="mb-10 text-3xl font-display uppercase sm:text-4xl md:mb-12">BLOG & ARTIGOS</h2>
 
         <div className="grid gap-8">
           {blogPosts.map((post, index) => (
             <Link href="#" key={index} className="group">
-              <div className="grid gap-4 md:grid-cols-[1fr_auto] items-baseline justify-between mb-2">
+              <div className="mb-2 grid items-baseline gap-2 sm:grid-cols-[1fr_auto] sm:gap-4">
                 <h3 className="text-2xl font-display group-hover:text-primary transition-colors text-balance">
                   {post.title}
                 </h3>
-                <span className="font-mono text-xs text-muted-foreground whitespace-nowrap">
-                  {post.date} // {post.readTime}
+                <span className="font-mono text-xs text-muted-foreground">
+                  {post.date} • {post.readTime}
                 </span>
               </div>
               <p className="text-muted-foreground mb-4 max-w-2xl">
@@ -402,77 +438,40 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline">VIEW ALL POSTS</Button>
+          <Button variant="outline">VER TODOS OS ARTIGOS</Button>
         </div>
       </Container>
-      {/* Contact Section */}
-      <Container id="contact" className="py-24 bg-card border-t border-border">
+      {/* Seção de contato */}
+      <Container id="contact" className="border-t border-border bg-card py-16 md:py-24">
         <div className="max-w-2xl justify-self-center">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-display mb-4">INITIATE_CONTACT</h2>
+            <h2 className="mb-4 text-3xl font-display sm:text-4xl">ENTRAR EM CONTATO</h2>
             <p className="text-muted-foreground">
-              Have a project in mind or just want to discuss the singularity?
-              Send a signal.
+              Tem um projeto em mente ou quer conversar sobre oportunidades e tecnologia?
+              Envie uma mensagem.
             </p>
           </div>
 
-          <form className="grid gap-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="text-xs font-mono text-muted-foreground"
-                >
-                  NAME
-                </label>
-                <Input id="name" placeholder="John Doe" />
-              </div>
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-xs font-mono text-muted-foreground"
-                >
-                  EMAIL
-                </label>
-                <Input id="email" type="email" placeholder="john@example.com" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label
-                htmlFor="message"
-                className="text-xs font-mono text-muted-foreground"
-              >
-                MESSAGE
-              </label>
-              <Textarea
-                id="message"
-                placeholder="Enter your message..."
-                className="min-h-[150px]"
-              />
-            </div>
-            <Button type="submit" className="w-full" size="lg">
-              SEND TRANSMISSION
-            </Button>
-          </form>
+          <ContactForm />
         </div>
       </Container>
-      {/* Footer */}
+      {/* Rodapé */}
       <Container
         component="footer"
-        className="py-8 border-t border-border bg-background text-center max-w-7xl mx-auto"
+        className="mx-auto max-w-7xl border-t border-border bg-background py-8 text-center"
       >
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-xs font-mono text-muted-foreground">
-            © 2025 MARCUS CHEN. ALL RIGHTS RESERVED.
+            © 2026 LEONARDO CASTRO. TODOS OS DIREITOS RESERVADOS.
           </div>
-          <div className="flex gap-6 text-xs font-mono text-muted-foreground">
-            <Link href="#" className="hover:text-primary transition-colors">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-mono text-muted-foreground">
+            <Link href={socialLinks.github} className="hover:text-primary transition-colors" target="_blank" rel="noreferrer">
               GITHUB
             </Link>
-            <Link href="#" className="hover:text-primary transition-colors">
+            <Link href={socialLinks.linkedin} className="hover:text-primary transition-colors" target="_blank" rel="noreferrer">
               LINKEDIN
             </Link>
-            <Link href="#" className="hover:text-primary transition-colors">
+            <Link href={socialLinks.twitter} className="hover:text-primary transition-colors" target="_blank" rel="noreferrer">
               TWITTER
             </Link>
           </div>
