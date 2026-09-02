@@ -117,13 +117,13 @@ A aplicação também possui integração com a **Resend API**, utilizada para i
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/Leo-CastroDEV/Portifolio-LeonardoCastro
 ```
 
 ### 2. Acesse a pasta
 
 ```bash
-cd SEU-REPOSITORIO
+cd Portifolio-LeonardoCastro
 ```
 
 ### 3. Instale as dependências
@@ -224,9 +224,9 @@ Estudante de Análise e Desenvolvimento de Sistemas | Desenvolvedor em formaçã
 
 ### 🌐 Conecte-se comigo
 
-* **GitHub:** `Leo-CastroDEV`
-* **LinkedIn:** Leonardo Castro
-* **Portfólio:** disponível neste projeto
+* **GitHub:** https://github.com/Leo-CastroDEV
+* **LinkedIn:** https://www.linkedin.com/in/leocastrodev/
+* **Portfólio:** https://www.leonardocastro.tech/
 
 ---
 
